@@ -20,7 +20,7 @@ def main():
         st.success("File saved successfully!")
 
         agent = create_csv_agent(
-            OpenAI(temperature=0, openai_api_key=st.secrets["openai_api_key"]),
+            OpenAI(temperature=0),
             "data.csv",
             verbose=True,
             agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
