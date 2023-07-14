@@ -1,9 +1,6 @@
-import os
-
 import streamlit as st
 from langchain.agents import create_csv_agent
 from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
 from langchain.agents.agent_types import AgentType
 from dotenv import load_dotenv
 import pandas as pd
@@ -23,7 +20,7 @@ def main():
         st.success("File saved successfully!")
 
         agent = create_csv_agent(
-            OpenAI(temperature=0),
+            OpenAI(temperature=0, openai_api_key=st.secrets["openai_api_key"]),
             "data.csv",
             verbose=True,
             agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
